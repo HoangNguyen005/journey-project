@@ -1,0 +1,97 @@
+.nike {
+    animation: fade-in 0.8s ease-out forwards;
+    background: linear-gradient(to right, #323131, #1c140e);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+}
+
+.main-content {
+    animation: animate 0.8s ease-out forwards;
+}
+
+.abc {
+    animation: a 1s ease-out forwards;
+    animation-delay: 3s;
+}
+
+.img-animate {
+    animation: img 1.4s ease-out forwards, img2 10s linear infinite 1s;
+    
+    transform-origin: bottom left;
+}
+
+@keyframes img {
+    0% {
+        rotate: -45deg;
+    }
+
+    70% {
+        rotate: -55deg;
+    }
+
+    100% {
+        rotate: -45deg;
+    }
+}
+
+@keyframes img2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(14px, 16px);
+    }
+    50% {
+        transform: translate(-10px, 10px);
+    }
+    75% {
+        transform: translate(-10px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        left: -100% !important;
+    }
+
+    to {
+        left: 50% !important;
+    }
+}
+
+@keyframes animate {
+    from {
+        right: -100%;
+        opacity: 0;
+    }
+
+    to {
+        right: 36%;
+        opacity: 1;
+    }
+}
+
+@keyframes a {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+input[name='size']:checked + label {
+    background-color: #fff;
+    color: black;
+}
+
+input[name='color']:checked + label {
+    border: 2px solid #fff;
+}
+

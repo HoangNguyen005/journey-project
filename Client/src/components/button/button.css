@@ -1,0 +1,29 @@
+.primary, .transparent, .rounded {
+    min-width: 90px;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-align: center;
+    display: block;
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.primary:hover {
+    background-color: #f76d1d;
+}
+
+.transparent {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    background: transparent;
+}
+
+.rounded {
+    border-radius: 999px;
+}

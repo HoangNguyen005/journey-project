@@ -1,0 +1,10 @@
+#header {
+    animation: fly-in 1s ease-out forwards;
+}
+
+@keyframes fly-in {
+    
+    to {
+       top: 0;
+    }
+}

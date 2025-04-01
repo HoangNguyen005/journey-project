@@ -1,0 +1,30 @@
+@import "tailwindcss";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@theme {
+    --color-primary: #FC5E02;
+    --color-price: #F73B64;
+    --color-text: #777;
+    --color-text-gray: #757575;
+    --color-gray: #333;
+    --color-background: #F6F6F6;
+    --color-border: rgba(0, 0, 0, .09);
+    --font-dancing-script: "Dancing Script", cursive;
+}
+
+
+
+/* add the code bellow */ 
+@layer utilities {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+    }
+  }
