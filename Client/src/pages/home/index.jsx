@@ -23,7 +23,7 @@ function HomePage() {
     const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
     console.log(historyWatched)
     useEffect(() => {
-        axios.get('http://localhost:3000/api/product?limit=10')
+        axios.get('https://journey-project-backend-86xu.onrender.com/product?limit=10')
             .then(res => {
                 // console.log(res.data)
                 setProducts(res.data.data)
@@ -55,7 +55,7 @@ function HomePage() {
                                         <h1 className="capitalize text-3xl select-none ">Lịch sử xem</h1>
                                         <span className="block w-46 h-[2px] select-none bg-primary"></span>
                                     </div>
-                                    <p onClick={()=> {
+                                    <p onClick={() => {
                                         localStorage.clear()
                                         setHistoryWatched([])
                                     }} className="text-sm hover:text-primary mt-4 cursor-pointer select-none">Xóa lịch sử</p>

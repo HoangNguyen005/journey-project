@@ -18,7 +18,7 @@ function Product() {
 
     // fetch data from the API and set it to the state variable
     if (brand) {
-      axios.get(`http://localhost:3000/api/product/brand/${brand}`)
+      axios.get(`https://journey-project-backend-86xu.onrender.com/product/brand/${brand}`)
         .then(res => {
           // console.log(res.data)
 
@@ -29,7 +29,7 @@ function Product() {
         })
 
     } else {
-      axios.get(`http://localhost:3000/api/product?limit=16`)
+      axios.get(`https://journey-project-backend-86xu.onrender.com/product?limit=16`)
         .then(res => {
           // console.log(res.data)
           setProducts(res.data.data)
