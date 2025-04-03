@@ -54,7 +54,7 @@ function GlobalProvider({ children }) {
         const fetch = async () => {
             try {
 
-                const res = await axios.get('http://localhost:3000/api/cart/get', {
+                const res = await axios.get(`${url}/cart/get`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                         "Content-Type": "application/json"
