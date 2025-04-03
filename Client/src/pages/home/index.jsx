@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,9 +17,11 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Hero from "../../components/hero";
 import ProductTemplate2 from "../../components/productTemplate2";
 import product from '../../assets/imgs/product3.png'
+import { GlobalContext } from "../../context/storeContext";
 function HomePage() {
     const [products, setProducts] = useState([])
-
+    const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
+    console.log(historyWatched)
     useEffect(() => {
         axios.get('http://localhost:3000/api/product?limit=10')
             .then(res => {
@@ -35,6 +37,80 @@ function HomePage() {
         <>
             <main className="home-page relative">
                 <Hero />
+
+                {
+                    historyWatched.length > 0 ? (
+                        <div className="container relative mx-auto mt-30">
+                            <div className="flex justify-between">
+                                <div className="hidden md:block">
+                                    <button className="swiper-button-prev !size-10 border border-primary rounded-full !-top-0 left-0 after:hidden duration-75 active:scale-95">
+                                        <FontAwesomeIcon className="text-primary text-sm" icon={faAngleLeft} />
+                                    </button>
+                                    <button className="swiper-button-next !size-10 border border-primary rounded-full !-top-0 !left-16 after:hidden duration-75 active:scale-95">
+                                        <FontAwesomeIcon className="text-primary text-sm" icon={faAngleRight} />
+                                    </button>
+                                </div>
+                                <div className="mb-5">
+                                    <div className="flex items-center gap-2 ">
+                                        <h1 className="capitalize text-3xl select-none ">Lịch sử xem</h1>
+                                        <span className="block w-46 h-[2px] select-none bg-primary"></span>
+                                    </div>
+                                    <p onClick={()=> {
+                                        localStorage.clear()
+                                        setHistoryWatched([])
+                                    }} className="text-sm hover:text-primary mt-4 cursor-pointer select-none">Xóa lịch sử</p>
+                                </div>
+                            </div>
+                            <Swiper
+
+                                navigation={{
+                                    clickable: true,
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                }}
+
+                                modules={[Navigation, FreeMode]}
+                                slidesPerView={5}
+                                spaceBetween={20}
+
+                                breakpoints={{
+                                    // when window width is >= 320px
+                                    320: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 20
+                                    },
+                                    // when window width is >= 580px
+                                    580: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 30
+                                    },
+                                    // when window width is >= 940px
+                                    940: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 20
+                                    },
+                                    1200: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 20
+                                    }
+                                }
+                                }
+                            >
+                                {historyWatched.map((product, index) => (
+                                    <SwiperSlide key={index}>
+                                        <ProductTemplate2
+                                            product={product}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                        </div>
+                    ) : (
+                        null
+                    )
+                }
+
                 <div className='main-content container mx-auto mt-32'>
                     <div className="text-center my-8">
                         <h1 className="text-4xl mb-2 font-bold text-gray ">Journey</h1>
@@ -96,11 +172,7 @@ function HomePage() {
                             {products.map(product => (
                                 <SwiperSlide key={product._id}>
                                     <ProductTemplate2
-                                        slug={product.slug}
-                                        name={product.name}
-                                        price={product.price}
-                                        image={product.images[0]}
-                                        brand={product.brand}
+                                        product={product}
                                     />
                                 </SwiperSlide>
                             ))}

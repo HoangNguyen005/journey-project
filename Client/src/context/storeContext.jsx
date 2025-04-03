@@ -12,6 +12,7 @@ function GlobalProvider({ children }) {
     const [product, setProduct] = useState({})
     const [cartItems, setCartItems] = useState([])
     const [showNotifi, setShowNotifi] = useState(false)
+    const [historyWatched, setHistoryWatched] = useState([])
 
     // Handle add to cart
     const addToCart = useCallback(async (item) => {
@@ -70,7 +71,24 @@ function GlobalProvider({ children }) {
         fetch()
     }, [user])
 
+    useEffect(() => {
+        const historyItems = JSON.parse(localStorage.getItem('history'))
+        if(!historyItems)
+            return;
+        setHistoryWatched(historyItems)
+    }, [])
 
+
+    useEffect(() => {
+        if (historyWatched.length == 0) return
+        const historyWatchedFn = (historyWatched) => {
+            const newItems = JSON.stringify(historyWatched)
+            localStorage.setItem('history', newItems)
+        }
+        historyWatchedFn(historyWatched)
+    }, [historyWatched])
+
+    // console.log(historyWatched)
 
 
     const contextValues = {
@@ -86,7 +104,9 @@ function GlobalProvider({ children }) {
         setCartItems,
         showNotifi,
         setShowNotifi,
-        addToCart
+        addToCart,
+        setHistoryWatched,
+        historyWatched
     }
 
 

@@ -37,10 +37,12 @@ const remove = async (req, res) => {
     if(!user) 
         return res.status(404).json({message: 'user not found', success: false})
     try {
-        await User.findByIdAndDelete(req.body.userId, req.params.id)
+        user.cartItems.splice(req.body.index, 1)
+        await user.save();
+        res.json({message: 'Delete successful', success: true, data: user.cartItems})
         
     } catch (error) {
-        
+        res.status(404).json({message: 'Error when delete product', error: error, success: false})
     }
 }
 

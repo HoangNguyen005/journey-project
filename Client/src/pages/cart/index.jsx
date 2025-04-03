@@ -3,30 +3,40 @@ import { GlobalContext } from "../../context/storeContext";
 import Button from "../../components/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-// import axios from "axios";
+import axios from "axios";
+import { Link } from "react-router";
+import config from "../../configs";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function Cart() {
-    const { cartItems } = useContext(GlobalContext)
+    const { cartItems, setCartItems } = useContext(GlobalContext)
     console.log(cartItems)
 
-    // const handleRemove = async (id) => {
-    //     axios.delete('http://localhost:3000/api/cart/remove/'+id, {
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //     })
-    //     .then(res => {
-    //         console.log(res)
-    //     })
-    // }
+    const handleRemove = async (index) => {
+        axios.delete('http://localhost:3000/api/cart/remove/'+index, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(res => {
+            console.log(res)
+            setCartItems(res.data.data)
+
+            toast.success("Xóa sản phẩm thành công")
+
+        })
+        .catch(err => console.log('Error when delete product',err))
+    }
     return (
         <div className="cart container mx-auto">
+            <ToastContainer/>
             <header className="mt-20">
                 <h1 className="text-start text-3xl font-bold">Cart items</h1>
             </header>
             <div className="grid grid-cols-3 gap-4">
                 <div className="col-span-3 lg:col-span-2 ">
-                    <table className="border-collapse w-full">
+                    <table className="border-collapse w-full select-none">
                         <thead className=" text-start">
                             <tr className=" text-gray h-16  " >
 
@@ -47,16 +57,16 @@ function Cart() {
                                         <td className="flex gap-4 py-6">
                                             <div className="min-w-32 h-26 rounded-md border border-border overflow-hidden">
 
-                                                <img className="object-contain size-full" src={item.images[0]} alt="" />
+                                              <Link to={`${config.routes.detail}/${item.slug}`}>  <img className="object-contain size-full" src={item.images[0]} alt="" /></Link>
                                             </div>
-                                            {item.name}
+                                           <Link to={`${config.routes.detail}/${item.slug}`}> {item.name}</Link>
                                         </td>
                                         <td className="text-center py-6">Red</td>
                                         <td className="text-center py-6">{item.size}</td>
                                         <td className="text-center py-6"><input className="w-14 text-center" type="number" value={item.quantity} name="" id="" /></td>
                                         <td className="text-center py-6">${item.price}</td>
                                         <td className="text-center py-6">
-                                            <FontAwesomeIcon  className="cursor-pointer text-red-700 hover:text-red-500" icon={faTrash} />
+                                            <FontAwesomeIcon onClick={()=>handleRemove(index)} className="cursor-pointer text-red-700 hover:text-red-500" icon={faTrash} />
                                         </td>
                                     </tr>
                                 ))
@@ -80,7 +90,7 @@ function Cart() {
                         </div>
                         <div className=" mt-4 flex justify-between text-black">
                             <p>Tổng cộng:</p>
-                            <p className=" text-black text-base font-bold">{cartItems.reduce((total, item) => total + (item.price * item.quantity), 0)}</p>
+                            <p className=" text-black text-base font-bold">${cartItems.reduce((total, item) => total + (item.price * item.quantity), 0)}</p>
                         </div>
                         <Button primary className="w-full text-white h-12 rounded-sm px-4 mt-6" type="submit">Thanh toán ngay</Button>
                   </div>

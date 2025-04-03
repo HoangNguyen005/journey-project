@@ -47,13 +47,13 @@ function Product() {
                 // console.log(res.data.success)
                 if (res.data.success == true) {
                     toast.success(res.data.message)
-                    setData({
+                     setData({
                         name: '',
                         des: '',
                         brand: '',
-                        price: '',   
-                        images: [],                  
+                        price: '',
                     })
+                     setImages([])
 
                 } else {
                     toast.error(res.data.message)

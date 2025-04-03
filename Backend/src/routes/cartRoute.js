@@ -7,6 +7,6 @@ const {authenticateToken} = require('../middleware/authenticateToken.js')
 
 router.get('/get', authenticateToken, get)
 router.post('/add', authenticateToken, add)
-router.delete('/remove',authenticateToken, remove)
+router.delete('/remove/:index',authenticateToken, remove)
 
 module.exports = router;

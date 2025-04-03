@@ -9,7 +9,7 @@ import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 
 function UserMenu() {
 
-    const { user, setUser, setToken, setCartItems } = useContext(GlobalContext)
+    const { user, setUser, setToken, setCartItems, setHistoryWatched } = useContext(GlobalContext)
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -33,11 +33,13 @@ function UserMenu() {
 
     }, [setUser])
 
-    const handleLogout = () => {
-        setToken("");
-        setUser({});
-        setCartItems([]);
-        localStorage.removeItem("token")
+    const handleLogout = async () => {
+        await setToken("");
+        await setUser({});
+        await setCartItems([]);
+        await setHistoryWatched([])
+        await localStorage.removeItem("token")
+        await localStorage.removeItem("history")
     }
 
     return (

@@ -1,7 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { ToastContainer, toast } from 'react-toastify';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -24,13 +25,17 @@ function Detail() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState("")
-    const { product, setProduct, showNotifi, setShowNotifi, addToCart } = useContext(GlobalContext)
+    const [showNotifi, setShowNotifi] = useState(false)
+    const { product, setProduct, addToCart, cartItems, setHistoryWatched, historyWatched } = useContext(GlobalContext)
 
     useEffect(() => {
         axios.get(`http://localhost:3000/api/product/${slug}`)
             .then(res => {
                 // console.log(res.data.data)
                 setProduct(res.data.data)
+                if (!historyWatched.some(item => item._id === res.data.data._id)) {
+                    setHistoryWatched(pre => [...pre, res.data.data])
+                }
             })
             .catch(err => {
                 console.error(err)
@@ -39,13 +44,8 @@ function Detail() {
     }, [slug])
 
 
-    useEffect(() => {
-        const timeOutId = setTimeout(() => {
-            setShowNotifi(false)
-        }, 3000)
 
-        return () => clearTimeout(timeOutId)
-    }, [showNotifi])
+
 
     const handleIncrease = () => {
         setQuantity(quantity => quantity + 1);
@@ -67,15 +67,22 @@ function Detail() {
     }
     // console.log(cartItems)
 
-    const handleAddToCart = async (product) => {
+    const handleAddToCart = useCallback(async (product) => {
         // console.log(user)
         if (size === '') {
             alert('Please select a size')
             return;
         }
-        await addToCart({ ...product, size, quantity })
 
-    }
+        if (cartItems.some(item => item._id === product._id && item.size === size)) {
+            toast.success('Thêm vào giỏ hàng thành công')
+
+            return;
+        }
+
+        await addToCart({ ...product, size, quantity })
+        toast.success('Thêm vào giỏ hàng thành công')
+    }, [product, size])
 
     const handleSelectSize = (e) => {
         setSize(e.target.value)
@@ -84,7 +91,7 @@ function Detail() {
 
     return (
         <div className="detail-page container mx-auto">
-
+            <ToastContainer />
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
                 <div className="col-span-1">
                     <Swiper
