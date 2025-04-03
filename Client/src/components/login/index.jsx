@@ -35,7 +35,7 @@ function Login() {
                     toast.error('Please fill all fields')
                     return;
                 }
-                const response = await axios.post(`${url}/user/${currState}`, data)
+                const response = await axios.post(`${url}/user/${currState}`, data, { withCredentials: true})
                 // console.log(response)
                 if (response.data.success) {
                     alert("Tạo tài khoản thành công")
@@ -55,7 +55,7 @@ function Login() {
                     toast.error('Please fill all fields')
                     return;
                 }
-                const response = await axios.post(`${url}/user/${currState}`, data)
+                const response = await axios.post(`${url}/user/${currState}`, data, { withCredentials: true})
 
                 if (response.data.success) {
                     alert("Đăng nhập thành công")

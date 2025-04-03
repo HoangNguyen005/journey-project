@@ -3,7 +3,7 @@ import axios from "axios";
 
 const GlobalContext = createContext()
 
-export const url = "https://cors-anywhere.herokuapp.com/https://journey-project-backend-86xu.onrender.com/api"
+export const url = "https://journey-project-backend-86xu.onrender.com/api"
 
 
 function GlobalProvider({ children }) {

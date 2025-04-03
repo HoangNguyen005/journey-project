@@ -29,7 +29,7 @@ function Detail() {
     const { product, setProduct, addToCart, cartItems, setHistoryWatched, historyWatched } = useContext(GlobalContext)
 
     useEffect(() => {
-        axios.get(`${url}/product/${slug}`)
+        axios.get(`${url}/product/${slug}`,{ withCredentials: true})
             .then(res => {
                 // console.log(res.data.data)
                 setProduct(res.data.data)

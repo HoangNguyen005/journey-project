@@ -18,7 +18,7 @@ function Product() {
 
     // fetch data from the API and set it to the state variable
     if (brand) {
-      axios.get(`${url}/product/brand/${brand}`)
+      axios.get(`${url}/product/brand/${brand}`,{ withCredentials: true})
         .then(res => {
           // console.log(res.data)
 

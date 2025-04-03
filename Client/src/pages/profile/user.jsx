@@ -32,7 +32,6 @@ function Profile() {
         try {
             const response = await axios.patch(`${url}/user/edit`, {data: newInfo}, {
                 withCredentials: true,
-                // credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem('token')}`

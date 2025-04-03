@@ -15,6 +15,7 @@ function UserMenu() {
         const fetchApi = async () => {
             try {
                 const response = await axios.get(`${url}/user/get`, {
+                    withCredentials: true,
                     headers: {
                         //    token: `${localStorage.getItem('token')}`,
                         Authorization: `Bearer ${localStorage.getItem('token')}`
