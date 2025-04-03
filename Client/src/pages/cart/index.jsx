@@ -17,7 +17,7 @@ function Cart() {
         const result = confirm('Bạn muốn xóa sản phẩm này?');
         if (!result) return;
         axios.delete(`${url}/cart/remove/` + index, {
-            withCredentials: true,
+          
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }

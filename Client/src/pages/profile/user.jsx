@@ -31,7 +31,7 @@ function Profile() {
         e.preventDefault();
         try {
             const response = await axios.patch(`${url}/user/edit`, {data: newInfo}, {
-                withCredentials: true,
+              
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem('token')}`

@@ -23,7 +23,7 @@ function HomePage() {
     const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
     // console.log(historyWatched)
     useEffect(() => {
-        axios.get(`${url}/product?limit=10`, { withCredentials: true})
+        axios.get(`${url}/product?limit=10`)
             .then(res => {
                 // console.log(res.data)
                 setProducts(res.data.data)

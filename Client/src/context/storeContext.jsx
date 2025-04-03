@@ -31,7 +31,7 @@ function GlobalProvider({ children }) {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json"
             },
-            withCredentials: true // Nếu backend yêu cầu
+        
         })
             .then(res => {
                 if (res.data.success) {
@@ -59,7 +59,7 @@ function GlobalProvider({ children }) {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                         "Content-Type": "application/json"
                     },
-                    withCredentials: true // Nếu backend yêu cầu
+                
                 })
                 setCartItems(res.data.data)
             } catch (error) {

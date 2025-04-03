@@ -55,7 +55,7 @@ function Login() {
                     toast.error('Please fill all fields')
                     return;
                 }
-                const response = await axios.post(`${url}/user/${currState}`, data, { withCredentials: true})
+                const response = await axios.post(`${url}/user/${currState}`, data)
 
                 if (response.data.success) {
                     alert("Đăng nhập thành công")
