@@ -21,7 +21,7 @@ const app = express();
 
 const allowedOrigins = [
     'http://localhost:5173',  // Cho phép client
-    'https://journey-project-backend-86xu.onrender.com',
+    'https://journey-project.onrender.com/',
     'http://localhost:5174' // Cho phép admin
 ];
 

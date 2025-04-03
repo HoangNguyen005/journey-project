@@ -21,7 +21,7 @@ import { GlobalContext, url } from "../../context/storeContext";
 function HomePage() {
     const [products, setProducts] = useState([])
     const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
-    console.log(historyWatched)
+    // console.log(historyWatched)
     useEffect(() => {
         axios.get(`${url}/product?limit=10`)
             .then(res => {

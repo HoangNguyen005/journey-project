@@ -39,7 +39,7 @@ function Profile() {
 
                  }
             })
-            console.log(response)
+            // console.log(response)
             if (response.data.success) {
                 toast.success(response.data.message)
                 await setUser(response.data.data)

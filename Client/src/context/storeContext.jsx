@@ -18,14 +18,11 @@ function GlobalProvider({ children }) {
 
     // Handle add to cart
     const addToCart = useCallback(async (item) => {
-        console.log(item)
-        console.log(cartItems)
+        // console.log(item)
+        // console.log(cartItems)
         // Kiểm tra xem item đã có trong gi�� hàng chưa
         if (cartItems.some(cartItem => cartItem.size == item.size)) {
-            // setShowNotifi(true)
-            // setTimeout(() => {
-            //     setShowNotifi(false)
-            // }, 4000)
+          
             alert("Sản phẩm đã có trong giỏ hàng")
             return;
         }
