@@ -23,7 +23,7 @@ function HomePage() {
     const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
     console.log(historyWatched)
     useEffect(() => {
-        axios.get('https://journey-project-backend-86xu.onrender.com/product?limit=10')
+        axios.get('https://journey-project-backend-86xu.onrender.com/api/product?limit=10')
             .then(res => {
                 // console.log(res.data)
                 setProducts(res.data.data)
