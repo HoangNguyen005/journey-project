@@ -19,24 +19,13 @@ const app = express();
 //     })
 // );
 
-const allowedOrigins = [
-    'http://localhost:5173',  // Cho phép client
-    'https://journey-project.onrender.com',
-    'http://localhost:5174' // Cho phép admin
-];
+// const allowedOrigins = [
+//     'http://localhost:5173',  // Cho phép client
+//     'https://journey-project.onrender.com',
+//     'http://localhost:5174' // Cho phép admin
+// ];
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: 'GET,POST,PUT, PATCH ,DELETE',
-    credentials: true,
-    allowedHeaders: 'Content-Type,Authorization',
-}));
+app.use(cors());
 
 // app.options("*", (req, res) => {
 //     res.header("Access-Control-Allow-Origin", "http://localhost:5173");
