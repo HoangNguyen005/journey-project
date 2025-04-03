@@ -7,9 +7,9 @@ const cartRoute = require('./cartRoute')
 
 const router = (app) => {
     // app.use('/', userRoute);
-    app.use('/api/trending', topTrending);
-    app.use('/api/product', product);
-    app.use('/api/user',  userRoute);
-    app.use('/api/cart',  cartRoute);
+    app.use('/trending', topTrending);
+    app.use('/product', product);
+    app.use('/user',  userRoute);
+    app.use('/cart',  cartRoute);
 };
 module.exports = router;
