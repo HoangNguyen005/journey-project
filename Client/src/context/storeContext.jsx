@@ -3,7 +3,7 @@ import axios from "axios";
 
 const GlobalContext = createContext()
 
-export const url = "http://localhost:3000/api"
+export const url = "https://journey-project-backend-86xu.onrender.com/api"
 
 
 function GlobalProvider({ children }) {
