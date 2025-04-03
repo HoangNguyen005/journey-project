@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "../../context/storeContext";
+import { GlobalContext, url } from "../../context/storeContext";
 import Tippy from '@tippyjs/react/headless'; // different import path!
 import { Link } from "react-router";
 import config from "../../configs";
@@ -14,7 +14,7 @@ function UserMenu() {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/user/get', {
+                const response = await axios.get(`${url}/user/get`, {
                     headers: {
                         //    token: `${localStorage.getItem('token')}`,
                         Authorization: `Bearer ${localStorage.getItem('token')}`

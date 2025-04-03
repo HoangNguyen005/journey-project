@@ -18,7 +18,7 @@ import Button from '../../components/button';
 import Notifi from '../../components/notifi'
 import { useParams } from 'react-router';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { GlobalContext } from '../../context/storeContext';
+import { GlobalContext, url } from '../../context/storeContext';
 
 function Detail() {
     const { slug } = useParams()
@@ -29,7 +29,7 @@ function Detail() {
     const { product, setProduct, addToCart, cartItems, setHistoryWatched, historyWatched } = useContext(GlobalContext)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/product/${slug}`)
+        axios.get(`${url}/product/${slug}`)
             .then(res => {
                 // console.log(res.data.data)
                 setProduct(res.data.data)

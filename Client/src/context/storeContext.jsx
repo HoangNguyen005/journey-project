@@ -3,6 +3,8 @@ import axios from "axios";
 
 const GlobalContext = createContext()
 
+export const url = "http://localhost:3000/api"
+
 
 function GlobalProvider({ children }) {
 
@@ -27,7 +29,7 @@ function GlobalProvider({ children }) {
             alert("Sản phẩm đã có trong giỏ hàng")
             return;
         }
-        axios.post('http://localhost:3000/api/cart/add', { item }, {
+        axios.post(`${url}/cart/add`, { item }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json"

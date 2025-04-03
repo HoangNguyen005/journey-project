@@ -7,11 +7,10 @@ import Button from "../button";
 import Cart from "../cart";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router";
 import UserMenu from "../userMenu";
 function Header() {
 
-    const { setShowLogin, cartItems, user, token, setToken } = useContext(GlobalContext)
+    const { setShowLogin, token } = useContext(GlobalContext)
     const [showNavBar, setShowNavBar] = useState(false)
 
     // console.log(show)

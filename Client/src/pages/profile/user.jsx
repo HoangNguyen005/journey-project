@@ -5,7 +5,7 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { GlobalContext } from "../../context/storeContext";
+import { GlobalContext, url } from "../../context/storeContext";
 
 import Button from "../../components/button";
 function Profile() {
@@ -30,7 +30,7 @@ function Profile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.patch('http://localhost:3000/api/user/edit', {data: newInfo}, {
+            const response = await axios.patch(`${url}/user/edit`, {data: newInfo}, {
                 withCredentials: true,
                 // credentials: "include",
                 headers: {

@@ -17,13 +17,13 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Hero from "../../components/hero";
 import ProductTemplate2 from "../../components/productTemplate2";
 import product from '../../assets/imgs/product3.png'
-import { GlobalContext } from "../../context/storeContext";
+import { GlobalContext, url } from "../../context/storeContext";
 function HomePage() {
     const [products, setProducts] = useState([])
     const { historyWatched, setHistoryWatched } = useContext(GlobalContext)
     console.log(historyWatched)
     useEffect(() => {
-        axios.get('https://journey-project-backend-86xu.onrender.com/product?limit=10')
+        axios.get(`${url}/product?limit=10`)
             .then(res => {
                 // console.log(res.data)
                 setProducts(res.data.data)

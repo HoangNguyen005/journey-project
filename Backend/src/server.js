@@ -21,6 +21,7 @@ const app = express();
 
 const allowedOrigins = [
     'http://localhost:5173',  // Cho phép client
+    'https://journey-project-backend-86xu.onrender.com',
     'http://localhost:5174' // Cho phép admin
 ];
 
@@ -54,4 +55,4 @@ app.use(morgan('combined'));
 
 // Routes
 routes(app);
-app.listen("https://journey-project-backend-86xu.onrender.com", () => console.log('listening on http://localhost:3000'));
+app.listen(3000, () => console.log('listening on http://localhost:3000'));

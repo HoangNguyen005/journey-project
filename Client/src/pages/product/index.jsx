@@ -6,19 +6,19 @@ import ProductTemplate1 from '../../components/productTemplate1'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../../components/button";
 import classNames from "classnames";
+
+import { url } from "../../context/storeContext";
 function Product() {
 
   const [products, setProducts] = useState([])
   const { brand } = useParams()
   // console.log(brand)
-  const temp = products
-
 
   useEffect(() => {
 
     // fetch data from the API and set it to the state variable
     if (brand) {
-      axios.get(`https://journey-project-backend-86xu.onrender.com/product/brand/${brand}`)
+      axios.get(`${url}/product/brand/${brand}`)
         .then(res => {
           // console.log(res.data)
 
@@ -29,7 +29,7 @@ function Product() {
         })
 
     } else {
-      axios.get(`https://journey-project-backend-86xu.onrender.com/product?limit=16`)
+      axios.get(`${url}/product?limit=16`)
         .then(res => {
           // console.log(res.data)
           setProducts(res.data.data)
