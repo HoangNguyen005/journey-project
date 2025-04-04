@@ -10,7 +10,7 @@ import emptyCart from '../../assets/imgs/empty-cart.jpg'
 import Button from '../button';
 function Cart() {
  
-    const { cartItems } = useContext(GlobalContext)
+    const { cartItems , setShowNavBar} = useContext(GlobalContext)
 
     return (
 
@@ -42,13 +42,13 @@ function Cart() {
                                         </li>
                                     ))}
                                 </ul>
-                                <Button to="/cart" primary className="rounded-sm py-2 px-4 text-sm self-end m-4">Xem giỏ hàng</Button>
+                                <Button onClick={()=>setShowNavBar(false)} to="/cart" primary className="rounded-sm py-2 px-4 text-sm self-end m-4">Xem giỏ hàng</Button>
                             </div>
                         )}
                     </div>
                 )}
             >
-                <div className="relative cursor-pointer">
+                <div className="relative mt-20 lg:mt-0 cursor-pointer">
                     <span className="absolute size-5 leading-5 text-sm  rounded-full text-center bg-primary text-white -top-2 -right-1">{cartItems.length}</span>
                     <FontAwesomeIcon className="text-2xl mx-2 text-gray-400 cursor-pointer" icon={faBagShopping} />
                 </div>

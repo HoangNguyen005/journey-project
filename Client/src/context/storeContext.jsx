@@ -4,7 +4,7 @@ import axios from "axios";
 const GlobalContext = createContext()
 
 
-export const url = "https://journey-project-backend-86xu.onrender.com/api"
+export const url = "https://journey-project-backend-u12h.onrender.com/api"
 
 
 function GlobalProvider({ children }) {
@@ -13,6 +13,7 @@ function GlobalProvider({ children }) {
     const [user, setUser] = useState({})
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [product, setProduct] = useState({})
+    const [showNavBar, setShowNavBar] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const [showNotifi, setShowNotifi] = useState(false)
     const [historyWatched, setHistoryWatched] = useState([])
@@ -100,7 +101,9 @@ function GlobalProvider({ children }) {
         setShowNotifi,
         addToCart,
         setHistoryWatched,
-        historyWatched
+        historyWatched,
+        showNavBar,
+        setShowNavBar
     }
 
     return (

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../../context/storeContext";
 import Nav from "../nav";
 import logo from '../../assets/imgs/logo.png'
@@ -10,8 +10,7 @@ import { faBarsStaggered, faMagnifyingGlass } from '@fortawesome/free-solid-svg-
 import UserMenu from "../userMenu";
 function Header() {
 
-    const { setShowLogin, token } = useContext(GlobalContext)
-    const [showNavBar, setShowNavBar] = useState(false)
+    const { setShowLogin, token, showNavBar, setShowNavBar } = useContext(GlobalContext)
 
     // console.log(show)
     return (
