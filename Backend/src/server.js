@@ -8,6 +8,8 @@ const routes = require('./routes');
 const db = require('./config/db/connect');
 // const { Schema } = mongoose;
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 
@@ -42,4 +44,4 @@ app.use(morgan('combined'));
 
 // Routes
 routes(app);
-app.listen(3000, () => console.log('listening on http://localhost:3000'));
+app.listen(port, () => console.log('listening on ' + port));
