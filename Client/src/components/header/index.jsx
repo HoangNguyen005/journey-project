@@ -14,7 +14,7 @@ function Header() {
 
     // console.log(show)
     return (
-        <header id="header" className="!overflow-hidden flex items-center static left-0 right-0 -top-[100%] h-20 z-[999] bg-white text-black">
+        <header id="header" className="!overflow-hidden flex items-center static left-0 right-0  h-16 lg:h-20 z-[999] bg-white text-black">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="logo lg:block hidden">
                     <img className="object-contain w-58 h-auto" src={logo} alt="" />

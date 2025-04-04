@@ -5,7 +5,7 @@ import axios from 'axios'
 import Button from '../button'
 function Login() {
     const [currState, setCurrState] = useState('login')
-    const { setShowLogin, setUser, setToken } = useContext(GlobalContext)
+    const { setShowLogin, setUser, setToken, setShowNavBar } = useContext(GlobalContext)
     // setToken(localStorage.getItem('token'))
     // const [validateEmail, setValidateEmail] = useState(false)
     // const [validatePassword, setValidatePassword] = useState(false)
@@ -38,6 +38,7 @@ function Login() {
                 const response = await axios.post(`${url}/user/${currState}`, data, { withCredentials: true})
                 // console.log(response)
                 if (response.data.success) {
+                    setShowNavBar(false)
                     alert("Tạo tài khoản thành công")
                     // toast.success(response.data.message)
                     setToken(response.data.token)

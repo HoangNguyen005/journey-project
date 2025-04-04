@@ -48,7 +48,7 @@ function Cart() {
                     </div>
                 )}
             >
-                <div className="relative mt-20 lg:mt-0 cursor-pointer">
+                <div className="relative inline-block mt-30 lg:mt-0 cursor-pointer">
                     <span className="absolute size-5 leading-5 text-sm  rounded-full text-center bg-primary text-white -top-2 -right-1">{cartItems.length}</span>
                     <FontAwesomeIcon className="text-2xl mx-2 text-gray-400 cursor-pointer" icon={faBagShopping} />
                 </div>

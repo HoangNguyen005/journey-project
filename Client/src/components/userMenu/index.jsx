@@ -9,13 +9,13 @@ import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 
 function UserMenu() {
 
-    const { user, setUser, setToken, setCartItems, setHistoryWatched } = useContext(GlobalContext)
+    const { user, setUser, setToken, setCartItems, setHistoryWatched, setShowNavBar } = useContext(GlobalContext)
 
     useEffect(() => {
         const fetchApi = async () => {
             try {
                 const response = await axios.get(`${url}/user/get`, {
-                
+
                     headers: {
                         //    token: `${localStorage.getItem('token')}`,
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -55,9 +55,12 @@ function UserMenu() {
                     <div className="box shadow z-50 py-4 bg-white rounded-sm" tabIndex="-1" {...attrs}>
                         <ul>
                             <li className="cursor-pointer px-4 py-1 mb-2 border-b border-border hover:bg-gray-200">
-                                <Link to={config.routes.profile}>
+                                <Link
+                                    onClick={() => setShowNavBar(false)}
+                                    to={config.routes.profile}>
                                     <FontAwesomeIcon className="text-base text-text-gray mr-2" icon={faUser} />
-                                    Tài khoản và cài đặt</Link>
+                                    Tài khoản và cài đặt
+                                </Link>
                             </li>
                             <li onClick={handleLogout} className="cursor-pointer px-4 py-1  hover:bg-gray-200">
                                 <FontAwesomeIcon className="text-base text-text-gray mr-2" icon={faRightFromBracket} />

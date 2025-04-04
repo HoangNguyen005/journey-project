@@ -70,19 +70,15 @@ function HomePage() {
                                 }}
 
                                 modules={[Navigation, FreeMode]}
-                                slidesPerView={5}
-                                spaceBetween={20}
+                                slidesPerView={2}
+                                spaceBetween={10}
 
                                 breakpoints={{
-                                    // when window width is >= 320px
-                                    320: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 20
-                                    },
+
                                     // when window width is >= 580px
                                     580: {
                                         slidesPerView: 3,
-                                        spaceBetween: 30
+                                        spaceBetween: 14
                                     },
                                     // when window width is >= 940px
                                     940: {
@@ -143,19 +139,15 @@ function HomePage() {
                             }}
 
                             modules={[Navigation, FreeMode]}
-                            slidesPerView={5}
-                            spaceBetween={20}
+                            slidesPerView={2}
+                            spaceBetween={10}
 
                             breakpoints={{
-                                // when window width is >= 320px
-                                320: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20
-                                },
+
                                 // when window width is >= 580px
                                 580: {
                                     slidesPerView: 3,
-                                    spaceBetween: 30
+                                    spaceBetween: 14
                                 },
                                 // when window width is >= 940px
                                 940: {
