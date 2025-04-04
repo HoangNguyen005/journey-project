@@ -15,8 +15,9 @@ function ProductTemplate2({product}) {
                     <img className='absolute -top-16 rounded-2xl  left-[50%] translate-x-[-50%] w-[90%] h-[80%] object-cover' src={product.images[0]} alt="" />
                 </Link>
                 <div className="flex items-center justify-between">
-                    <Link onClick={toTop} to={`${config.routes.product}/${product.slug}`}>
-                        <h1 className="text-base capitalize truncate lg:max-w-38 max-w-32">{product.name}</h1>
+                    <Link className='text-base block capitalize truncate' onClick={toTop} to={`${config.routes.product}/${product.slug}`}>
+                        {product.name}
+                     
                     </Link>
                     <div className="flex items-center">
                         <FontAwesomeIcon className='text-yellow-300 text-base' icon={faStar} />

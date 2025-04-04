@@ -3,6 +3,7 @@ import axios from "axios";
 
 const GlobalContext = createContext()
 
+
 export const url = "https://journey-project-backend-86xu.onrender.com/api"
 
 
@@ -21,8 +22,7 @@ function GlobalProvider({ children }) {
         // console.log(item)
         // console.log(cartItems)
         // Kiểm tra xem item đã có trong gi�� hàng chưa
-        if (cartItems.some(cartItem => cartItem.size == item.size)) {
-          
+        if (cartItems.some(cartItem => cartItem.size == item.size)) {       
             alert("Sản phẩm đã có trong giỏ hàng")
             return;
         }
@@ -30,8 +30,7 @@ function GlobalProvider({ children }) {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json"
-            },
-        
+            },       
         })
             .then(res => {
                 if (res.data.success) {
@@ -39,7 +38,6 @@ function GlobalProvider({ children }) {
                     setTimeout(() => {
                         setShowNotifi(false)
                     }, 4000)
-
                 }
             })
             .catch(err => {
@@ -53,20 +51,17 @@ function GlobalProvider({ children }) {
     useEffect(() => {
         const fetch = async () => {
             try {
-
                 const res = await axios.get(`${url}/cart/get`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`,
                         "Content-Type": "application/json"
-                    },
-                
+                    },            
                 })
                 setCartItems(res.data.data)
             } catch (error) {
                 console.log(error)
             }
         }
-
         fetch()
     }, [user])
 
@@ -107,9 +102,6 @@ function GlobalProvider({ children }) {
         setHistoryWatched,
         historyWatched
     }
-
-
-
 
     return (
         <GlobalContext.Provider value={contextValues}>

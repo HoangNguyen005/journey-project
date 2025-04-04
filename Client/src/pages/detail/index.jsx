@@ -33,7 +33,7 @@ function Detail() {
             .then(res => {
                 // console.log(res.data.data)
                 setProduct(res.data.data)
-                if (!historyWatched.some(item => item._id === res.data.data._id)) {
+                if (!historyWatched.some(item => item._id == res.data.data._id)) {
                     setHistoryWatched(pre => [...pre, res.data.data])
                 }
             })
